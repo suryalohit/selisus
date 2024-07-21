@@ -11,6 +11,7 @@ app.debug = True
 
 @app.route('/')
 def main():
+    print("hello")
     return 'hi'
 
 
