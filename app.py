@@ -107,7 +107,7 @@ def main():
                   print(f"total spaces available : {len(available_spaces)}")
     
                   for spaces in available_spaces:
-                        driver.set_window_size(1920, 780)
+                        driver.set_window_size(1920, 980)
                         print("3")
                         spaces.click()
                         print("4")
@@ -148,6 +148,8 @@ def main():
                                     
                               print("1.5.0")   
                               #annaon
+                              time.sleep(10)
+                              print(driver.get_screenshot_as_base64())
                               WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input.r-30o5oe.r-1p0dtai.r-1pi2tsx.r-1d2f490.r-crgep1.r-t60dpp.r-u8s1d.r-zchlnj.r-ipm5af.r-13qz1uu.r-1ei5mc7'))).click()
                               #listen
                               print("1.5.1")  
