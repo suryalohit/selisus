@@ -6,6 +6,7 @@ USER root
 # Install Chrome dependencies
 RUN apt-get update && apt-get install -y \
     wget \
+    gunicorn==19.3.0 \
     gnupg2 \
     apt-transport-https \
     ca-certificates \
@@ -20,7 +21,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 RUN apt-get update && apt-get install -y google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get gunicorn==19.3.0    
+   
 
 USER gitpod
 
