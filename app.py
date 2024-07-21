@@ -12,6 +12,7 @@ app.debug = True
 
 @app.route('/')
 def main():
+      print("start1")
       chrome_options = Options()
     # Important Arguments won't eun without them in Gitpod
       chrome_options.add_argument("--disable-dev-shm-usage") 
@@ -23,6 +24,7 @@ def main():
       driver = webdriver.Chrome(service=service, options=chrome_options)
       
       driver.get("https://www.cricbuzz.com/")
+      print("start2")
       print(driver.title)
       print(driver.title, flush=True)
       print(driver.current_url)
