@@ -27,3 +27,5 @@ ENV CHROME_BIN=/usr/bin/google-chrome
 
 # Check if Chrome was installed successfully
 RUN google-chrome --version
+
+CMD gunicorn 'app:app' --bind=0.0.0.0:8000
