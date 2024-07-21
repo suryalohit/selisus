@@ -12,12 +12,21 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
+
+
+
 app=Flask(__name__)
 
 app.debug = True
 
 @app.route('/')
 def main():
+      mobile_emulation = {
+   "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
+   "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
+   "clientHints": {"platform": "Android", "mobile": True} }
+
+
       
       chrome_options = Options()
       
@@ -26,6 +35,7 @@ def main():
       chrome_options.add_argument("--disable-gpu")
       chrome_options.add_argument("--disable-dev-shm-usage") 
       chrome_options.add_argument('--remote-debugging-pipe')
+      chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
       chrome_options.page_load_strategy = 'normal'
       
       service = Service(ChromeDriverManager().install())
@@ -36,7 +46,8 @@ def main():
       
      
       print("1")
-      time.sleep(3)
+      time.sleep(6)
+      print(driver.get_screenshot_as_base64())
       username = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
       username.click()
       username.send_keys('devikagoud245@gmail.com')
