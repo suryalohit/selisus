@@ -42,7 +42,7 @@ def main():
       
       driver = webdriver.Chrome(service=service, options=chrome_options)
       driver.set_window_size(1920, 780)
-      driver.get("https://x.com/i/flow/login")
+      driver.get("https://x.com/")
       
      
       print("1")
