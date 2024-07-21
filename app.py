@@ -14,9 +14,13 @@ app.debug = True
 def main():
       print("start1")
       chrome_options = Options()
+      chrome_options.add_argument("--no-sandbox")
     # Important Arguments won't eun without them in Gitpod
+      chrome_options.add_argument("--headless")
+      chrome_options.add_argument("--disable-gpu")
+      
+      
       chrome_options.add_argument("--disable-dev-shm-usage") 
-      chrome_options.add_argument("--headless")  
       chrome_options.add_argument('--remote-debugging-pipe')
       
       # Setup ChromeDriver
