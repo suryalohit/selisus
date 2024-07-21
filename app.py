@@ -59,7 +59,7 @@ def main():
       
       time.sleep(4)
       driver.get('https://x.com/home/')
-      time.sleep(5)
+      time.sleep(15)
       results={}
       #for i in range(1,10):
       for i in range(1):
@@ -67,7 +67,7 @@ def main():
             print(f"running round:{i}")
             try:
                   driver.get('https://x.com/home/')
-                  time.sleep(4)
+                  time.sleep(15)
                   print(driver.get_screenshot_as_base64()) 
                   print("4")
                   
@@ -80,7 +80,7 @@ def main():
                               print("6")
                               
                               driver.get(f'https://x.com/i/spaces/{space}/peek')
-                              time.sleep(4)
+                              time.sleep(15)
                               print("7")
                               pf=driver.find_elements(By.CSS_SELECTOR, 'span.css-1jxf684.r-dnmrzs.r-1udh08x.r-3s2u2q.r-bcqeeo.r-1ttztb7.r-qvutc0.r-poiln3.r-1wvb978.r-1vr29t4')
                               print("8")
@@ -98,7 +98,7 @@ def main():
                   print("10")
                   driver.set_window_size(1920, 780)
                   driver.get('https://x.com/home/')
-                  time.sleep(5)
+                  time.sleep(15)
                   print(driver.get_screenshot_as_base64()) 
                   available_spaces=driver.find_elements(By.CLASS_NAME, 'css-175oi2r.r-1habvwh.r-eqz5dr.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-lrvibr.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')
                   print(f"total spaces available : {len(available_spaces)}")
