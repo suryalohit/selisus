@@ -12,13 +12,22 @@ app.debug = True
 
 @app.route('/')
 def main():
-    for i in range(6):
-        print(i)
-        time.sleep(3)
-    print("end")
-        
-    
-    return '200'
+      chrome_options = Options()
+    # Important Arguments won't eun without them in Gitpod
+      chrome_options.add_argument("--disable-dev-shm-usage") 
+      chrome_options.add_argument("--headless")  
+      
+      # Setup ChromeDriver
+      service = Service(ChromeDriverManager().install())
+      driver = webdriver.Chrome(service=service, options=chrome_options)
+      
+      driver.get("https://www.cricbuzz.com/")
+      print(driver.title)
+      print(driver.title, flush=True)
+      print(driver.current_url)
+      print(driver.current_url, flush=True)
+      driver.quit()
+      return '200'
 
 
 if __name__ == "__main__":
