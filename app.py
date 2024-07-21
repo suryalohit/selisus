@@ -16,6 +16,7 @@ def main():
     # Important Arguments won't eun without them in Gitpod
       chrome_options.add_argument("--disable-dev-shm-usage") 
       chrome_options.add_argument("--headless")  
+      chrome_options.add_argument('--remote-debugging-pipe')
       
       # Setup ChromeDriver
       service = Service(ChromeDriverManager().install())
