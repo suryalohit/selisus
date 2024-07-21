@@ -8,6 +8,8 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from flask import Flask
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 app=Flask(__name__)
@@ -33,17 +35,20 @@ def main():
       time.sleep(5)
       print(driver.get_window_size())
       print("1")
-      username = driver.find_element("name", "text")
+      
+      username = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
       username.click()
       username.send_keys('devikagoud245@gmail.com')
-      driver.find_element("xpath", '//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]').click()
+      WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]'))).click()
+      
       time.sleep(5)
       try:
             print("2")
-            check = driver.find_element("name", "text")
+            check = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
             check.click()
             check.send_keys('retiredHippo')
-            driver.find_element("xpath", '//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/button').click()
+            WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/button'))).click()
+          
             time.sleep(4)
 
       except:
@@ -52,28 +57,28 @@ def main():
       print("3")
       print("before password")
       print(driver.get_screenshot_as_base64()) 
-      password = driver.find_element("name", "password")
+      password =WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "password")))
       password.click()
       password.send_keys('Asailohit30@')
-      driver.find_element("xpath", '//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/button').click()
+      WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/button'))).click()
+    
       
       
-      time.sleep(4)
-      driver.get('https://x.com/home/')
-      time.sleep(6)
+      print("login done")
       results={}
       #for i in range(1,10):
       for i in range(1):
            
             print(f"running round:{i}")
             try:
+                  driver.set_window_size(1920, 780)
                   driver.get('https://x.com/home/')
                   time.sleep(8)
                   print("after login to x")
                   print(driver.get_screenshot_as_base64()) 
                   print("4")
                   
-                  driver.set_window_size(1920, 780)
+                  
                   for space in list(results.keys()):
                         print(f"space name is : {space}")
                         print("5")
@@ -103,13 +108,14 @@ def main():
                   time.sleep(19)
                   print(driver.get_screenshot_as_base64()) 
                   print("after login to x")
+                  
                   available_spaces=driver.find_elements(By.CLASS_NAME, 'css-175oi2r.r-1habvwh.r-eqz5dr.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-lrvibr.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')
                   print(f"total spaces available : {len(available_spaces)}")
 
                   for spaces in available_spaces:
                         driver.set_window_size(1920, 780)
                         spaces.click()
-                        time.sleep(24)
+                        time.sleep(2)
                         print("open the space")
                         print(driver.get_screenshot_as_base64()) 
                         parts = driver.current_url.split('/')
@@ -118,6 +124,7 @@ def main():
 
                         if spaceid not in  list(results.keys()):
                               print("13")
+                              ##
                               pf=driver.find_elements(By.CSS_SELECTOR, 'span.css-1jxf684.r-dnmrzs.r-1udh08x.r-3s2u2q.r-bcqeeo.r-1ttztb7.r-qvutc0.r-poiln3.r-1wvb978.r-1vr29t4')
                               print(f"profiles nummber is : {len(pf)}")
                               print("1.0")
@@ -146,39 +153,22 @@ def main():
                               print("1.4")
                               for p in range(1,len(pf)):
                                     results[spaceid]['speaker'].add(pf[p].text)
-                                    print(p)
                                     print(pf[p].text)
-                              print("1.5.0")      
-                              lis=driver.find_element(By.CSS_SELECTOR, 'button.css-175oi2r.r-1udnf30.r-1uusn97.r-h3s6tt.r-1udh08x.r-13qz1uu.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l.r-105ug2t')
-                              print("1.5")
-                              print(lis.text)
+                              print("1.5.0")   
+                              #annaon
+                              WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input.r-30o5oe.r-1p0dtai.r-1pi2tsx.r-1d2f490.r-crgep1.r-t60dpp.r-u8s1d.r-zchlnj.r-ipm5af.r-13qz1uu.r-1ei5mc7'))).click()
+                              #listen
+                              WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.css-175oi2r.r-1udnf30.r-1uusn97.r-h3s6tt.r-1udh08x.r-13qz1uu.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l.r-105ug2t'))).click()
+                             
                               
-                              annon=driver.find_element(By.CSS_SELECTOR, 'input.r-30o5oe.r-1p0dtai.r-1pi2tsx.r-1d2f490.r-crgep1.r-t60dpp.r-u8s1d.r-zchlnj.r-ipm5af.r-13qz1uu.r-1ei5mc7')
-                              annon.click()
-                              time.sleep(8)
-                              lis.click()
-                              
-                              time.sleep(18)
-                              
-                              
-                              
-                              print(len(driver.requests))
+                              time.sleep(10)
                               results[spaceid]['url']=driver.wait_for_request('prod-fastly', timeout=12).url
+                              
                               print("1.7")
+                              #end listen
+                              WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.css-175oi2r.r-sdzlij.r-1phboty.r-rs99b7.r-lrvibr.r-2yi16.r-1qi8awa.r-3pj75a.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l'))).click()
 
-                              enddd=driver.find_element(By.CSS_SELECTOR, 'button.css-175oi2r.r-sdzlij.r-1phboty.r-rs99b7.r-lrvibr.r-2yi16.r-1qi8awa.r-3pj75a.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')
-                              
-                              
-                              print("1.8")
-                              enddd.click()
-                              time.sleep(4)
-                              print(driver.get_screenshot_as_base64()) 
-
-                              
-
-
-                          
-
+             
             except:
                   print("except")
                
