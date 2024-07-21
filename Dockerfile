@@ -1,7 +1,7 @@
 # Start from the Gitpod workspace full image
 FROM gitpod/workspace-python-3.12
 EXPOSE 0000
-USER root
+
 
 # Install Chrome dependencies
 RUN apt-get update && apt-get install -y \
@@ -29,7 +29,7 @@ RUN pip install -r requirements.txt
 
 
 
-USER gitpod
+
 
 # Add the Chrome as a path variable
 ENV CHROME_BIN=/usr/bin/google-chrome
