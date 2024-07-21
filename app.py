@@ -146,6 +146,7 @@ def main():
                               print("1.4")
                               for p in range(1,len(pf)):
                                     results[spaceid]['speaker'].add(pf[p].text)
+                                    print(p)
                                     print(pf[p].text)
                               
                               print("1.5")
