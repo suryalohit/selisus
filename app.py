@@ -12,9 +12,7 @@ app.debug = True
 
 @app.route('/')
 def main():
-    for i in range(20):
-        time.sleep(3)
-        print(f" {i} :hello", flush=True)
+    print("pdgdx")
         
     
     return 'hi'
