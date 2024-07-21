@@ -1,6 +1,6 @@
 # Start from the Gitpod workspace full image
 FROM gitpod/workspace-python-3.12
-
+EXPOSE 0000
 USER root
 
 # Install Chrome dependencies
