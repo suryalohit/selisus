@@ -59,7 +59,7 @@ def main():
       
       time.sleep(4)
       driver.get('https://x.com/home/')
-      time.sleep(15)
+      time.sleep(6)
       results={}
       #for i in range(1,10):
       for i in range(1):
@@ -67,7 +67,7 @@ def main():
             print(f"running round:{i}")
             try:
                   driver.get('https://x.com/home/')
-                  time.sleep(15)
+                  time.sleep(8)
                   print(driver.get_screenshot_as_base64()) 
                   print("4")
                   
@@ -94,11 +94,11 @@ def main():
                               print("except")  
                               print(results[space])
                               del results[space]
-                  time.sleep(10)
+                  time.sleep(4)
                   print("10")
                   driver.set_window_size(1920, 780)
                   driver.get('https://x.com/home/')
-                  time.sleep(15)
+                  time.sleep(39)
                   print(driver.get_screenshot_as_base64()) 
                   available_spaces=driver.find_elements(By.CLASS_NAME, 'css-175oi2r.r-1habvwh.r-eqz5dr.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-lrvibr.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')
                   print(f"total spaces available : {len(available_spaces)}")
