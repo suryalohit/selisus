@@ -99,18 +99,18 @@ def main():
                   print("10")
                   driver.set_window_size(1920, 780)
                   driver.get('https://x.com/home/')
-                  time.sleep(20)
-                
                   
-                  available_spaces=driver.find_elements(By.CLASS_NAME, 'css-175oi2r.r-1habvwh.r-eqz5dr.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-lrvibr.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')
+                
+                  available_spaces = WebDriverWait(driver, 50).until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'css-175oi2r.r-1habvwh.r-eqz5dr.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-lrvibr.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')))
+                
                   print(f"total spaces available : {len(available_spaces)}")
 
                   for spaces in available_spaces:
                         driver.set_window_size(1920, 780)
                         spaces.click()
-                        time.sleep(15)
+                        
                         print("open the space")
-                        print(driver.get_screenshot_as_base64()) 
+                        
                         parts = driver.current_url.split('/')
                         spaceid = parts[5]
                         print(spaceid)
@@ -118,23 +118,17 @@ def main():
                         if spaceid not in  list(results.keys()):
                               print("13")
                               ##
-                              pf=driver.find_elements(By.CSS_SELECTOR, 'span.css-1jxf684.r-dnmrzs.r-1udh08x.r-3s2u2q.r-bcqeeo.r-1ttztb7.r-qvutc0.r-poiln3.r-1wvb978.r-1vr29t4')
+                              
+                              pf=WebDriverWait(driver, 50).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'span.css-1jxf684.r-dnmrzs.r-1udh08x.r-3s2u2q.r-bcqeeo.r-1ttztb7.r-qvutc0.r-poiln3.r-1wvb978.r-1vr29t4')))
                               print(f"profiles nummber is : {len(pf)}")
                               print("1.0")
-                              print("opeened space before listening to ")
-                              print(driver.get_screenshot_as_base64()) 
-                              
-                              
-                              print("1.1")
-                              print(pf[0].text)
+                             
                               
                               results[spaceid]={'host': "ajhgfd", 'speaker': set(), 'url': "z"}
                               print("1.2")
-                              print(pf[0].text)
-                              a="sf"
-                              print(type(a))
+                              
                               print("1.2")
-                              print(type(str(pf[0].text)))
+                              
                               host=pf[0].text
                               results[spaceid]['host']=host
                               print(results[spaceid]['host'])
@@ -143,15 +137,15 @@ def main():
                               results[spaceid]['host']=str(pf[0].text)
                               print("1.3")
                               
-                              print("1.4")
+                              
                               for p in range(1,len(pf)):
                                     results[spaceid]['speaker'].add(pf[p].text)
                                     print(pf[p].text)
                               print("1.5.0")   
                               #annaon
-                              WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input.r-30o5oe.r-1p0dtai.r-1pi2tsx.r-1d2f490.r-crgep1.r-t60dpp.r-u8s1d.r-zchlnj.r-ipm5af.r-13qz1uu.r-1ei5mc7'))).click()
+                              WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input.r-30o5oe.r-1p0dtai.r-1pi2tsx.r-1d2f490.r-crgep1.r-t60dpp.r-u8s1d.r-zchlnj.r-ipm5af.r-13qz1uu.r-1ei5mc7'))).click()
                               #listen
-                              WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.css-175oi2r.r-1udnf30.r-1uusn97.r-h3s6tt.r-1udh08x.r-13qz1uu.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l.r-105ug2t'))).click()
+                              WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.css-175oi2r.r-1udnf30.r-1uusn97.r-h3s6tt.r-1udh08x.r-13qz1uu.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l.r-105ug2t'))).click()
                              
                               
                               time.sleep(10)
@@ -159,7 +153,7 @@ def main():
                               
                               print("1.7")
                               #end listen
-                              WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.css-175oi2r.r-sdzlij.r-1phboty.r-rs99b7.r-lrvibr.r-2yi16.r-1qi8awa.r-3pj75a.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l'))).click()
+                              WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.css-175oi2r.r-sdzlij.r-1phboty.r-rs99b7.r-lrvibr.r-2yi16.r-1qi8awa.r-3pj75a.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l'))).click()
 
              
             except:
