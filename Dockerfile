@@ -6,7 +6,7 @@ USER root
 # Install Chrome dependencies
 RUN apt-get update && apt-get install -y \
     wget \
-    flask \
+    Flask \
     gunicorn \
     gnupg2 \
     apt-transport-https \
