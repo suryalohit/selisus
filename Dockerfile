@@ -6,7 +6,7 @@ USER root
 # Install Chrome dependencies
 RUN apt-get update && apt-get install -y \
     wget \
-    gunicorn==19.3.0 \
+    gunicorn \
     gnupg2 \
     apt-transport-https \
     ca-certificates \
