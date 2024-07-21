@@ -1,4 +1,6 @@
 image: chetan1111/gitpod-selenium
+ports:
+    - "8080:8080"
 
 tasks:
   - init: pip install selenium webdriver-manager  
