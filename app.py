@@ -123,7 +123,7 @@ def main():
                               print("1.0")
                               print("opeened space before listening to ")
                               print(driver.get_screenshot_as_base64()) 
-                              lis=driver.find_element(By.CSS_SELECTOR, 'button.css-175oi2r.r-1udnf30.r-1uusn97.r-h3s6tt.r-1udh08x.r-13qz1uu.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l.r-105ug2t')
+                              
                               
                               print("1.1")
                               print(pf[0].text)
@@ -148,7 +148,8 @@ def main():
                                     results[spaceid]['speaker'].add(pf[p].text)
                                     print(p)
                                     print(pf[p].text)
-                              
+                              print("1.5.0")      
+                              lis=driver.find_element(By.CSS_SELECTOR, 'button.css-175oi2r.r-1udnf30.r-1uusn97.r-h3s6tt.r-1udh08x.r-13qz1uu.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l.r-105ug2t')
                               print("1.5")
                               print(lis.text)
                               
