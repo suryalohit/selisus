@@ -100,7 +100,8 @@ def main():
                   driver.set_window_size(1920, 780)
                   driver.get('https://x.com/home/')
                   print("1") 
-                
+                  time.sleep(10)
+                  print(driver.get_screenshot_as_base64())
                   available_spaces = WebDriverWait(driver, 50).until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'css-175oi2r.r-1habvwh.r-eqz5dr.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-lrvibr.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')))
                   print("2")
                   print(f"total spaces available : {len(available_spaces)}")
