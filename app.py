@@ -62,7 +62,7 @@ def main():
       time.sleep(5)
       results={}
       #for i in range(1,10):
-      for i in range(2):
+      for i in range(1):
            
             print(f"running round:{i}")
             try:
