@@ -6,7 +6,6 @@ USER root
 # Install Chrome dependencies
 RUN apt-get update && apt-get install -y \
     wget \
-    Flask \
     gunicorn \
     gnupg2 \
     apt-transport-https \
@@ -22,7 +21,17 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 RUN apt-get update && apt-get install -y google-chrome-stable \
     && rm -rf /var/lib/apt/lists/*
 
-   
+COPY ./requirements.txt /app/requirements.txt
+
+# switch working directory
+WORKDIR /app
+
+# install the dependencies and packages in the requirements file
+RUN pip install -r requirements.txt
+
+# copy every content from the local file to the image
+COPY . /app
+
 
 USER gitpod
 
