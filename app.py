@@ -50,7 +50,7 @@ def main():
             print("except")
 
       print("3")
-      driver.save_screenshot("mon3.png")
+      print(driver.get_screenshot_as_base64()) 
       password = driver.find_element("name", "password")
       password.click()
       password.send_keys('Asailohit30@')
@@ -68,7 +68,7 @@ def main():
             try:
                   driver.get('https://x.com/home/')
                   time.sleep(4)
-                  driver.save_screenshot("afterlogin.png")
+                  print(driver.get_screenshot_as_base64()) 
                   print("4")
                   
                   driver.set_window_size(1920, 780)
@@ -99,7 +99,7 @@ def main():
                   driver.set_window_size(1920, 780)
                   driver.get('https://x.com/home/')
                   time.sleep(5)
-                  driver.save_screenshot("afterlogin1.png")
+                  print(driver.get_screenshot_as_base64()) 
                   available_spaces=driver.find_elements(By.CLASS_NAME, 'css-175oi2r.r-1habvwh.r-eqz5dr.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-lrvibr.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')
                   print(f"total spaces available : {len(available_spaces)}")
 
@@ -107,7 +107,7 @@ def main():
                         driver.set_window_size(1920, 780)
                         spaces.click()
                         time.sleep(5)
-                        driver.save_screenshot("spaceopen.png")
+                        print(driver.get_screenshot_as_base64()) 
                         parts = driver.current_url.split('/')
                         spaceid = parts[5]
                         print(spaceid)
@@ -117,7 +117,7 @@ def main():
                               pf=driver.find_elements(By.CSS_SELECTOR, 'span.css-1jxf684.r-dnmrzs.r-1udh08x.r-3s2u2q.r-bcqeeo.r-1ttztb7.r-qvutc0.r-poiln3.r-1wvb978.r-1vr29t4')
                               print(f"profiles nummber is : {len(pf)}")
                               print("1.0")
-                              driver.save_screenshot("beforelisten.png")
+                              print(driver.get_screenshot_as_base64()) 
                               lis=driver.find_element(By.CSS_SELECTOR, 'button.css-175oi2r.r-1udnf30.r-1uusn97.r-h3s6tt.r-1udh08x.r-13qz1uu.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l.r-105ug2t')
                               
                               print("1.1")
@@ -165,7 +165,7 @@ def main():
                               print("1.8")
                               enddd.click()
                               time.sleep(4)
-                              driver.save_screenshot("afterendd.png")
+                              print(driver.get_screenshot_as_base64()) 
 
                               
 
