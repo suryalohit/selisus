@@ -99,29 +99,33 @@ def main():
                   print("10")
                   driver.set_window_size(1920, 780)
                   driver.get('https://x.com/home/')
-                  
+                  print("1") 
                 
                   available_spaces = WebDriverWait(driver, 50).until(EC.presence_of_all_elements_located((By.CLASS_NAME, 'css-175oi2r.r-1habvwh.r-eqz5dr.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-lrvibr.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')))
-                
+                  print("2")
                   print(f"total spaces available : {len(available_spaces)}")
-
+    
                   for spaces in available_spaces:
                         driver.set_window_size(1920, 780)
+                        print("3")
                         spaces.click()
+                        print("4")
                         time.sleep(6)
+                        print("5")
                         print("open the space")
                         
                         parts = driver.current_url.split('/')
                         spaceid = parts[5]
                         print(spaceid)
-
+                        print("6")
                         if spaceid not in  list(results.keys()):
                               print("13")
                               ##
                               
                               pf=WebDriverWait(driver, 50).until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'span.css-1jxf684.r-dnmrzs.r-1udh08x.r-3s2u2q.r-bcqeeo.r-1ttztb7.r-qvutc0.r-poiln3.r-1wvb978.r-1vr29t4')))
+                              print("7")
                               print(f"profiles nummber is : {len(pf)}")
-                              print("1.0")
+                              print("8")
                              
                               
                               results[spaceid]={'host': "ajhgfd", 'speaker': set(), 'url': "z"}
