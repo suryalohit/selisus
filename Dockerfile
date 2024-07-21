@@ -2,7 +2,7 @@
 FROM gitpod/workspace-python-3.12
 EXPOSE 0000
 
-USER ROOT 
+
 # Install Chrome dependencies
 RUN apt-get update && apt-get install -y \
     wget \
