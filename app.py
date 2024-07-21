@@ -7,22 +7,12 @@ from flask import Flask
 
 app=Flask(__name__)
 
+app.debug = True
+
+@app.route('/')
 def main():
-  chrome_options = Options()
-# Important Arguments won't eun without them in Gitpod
-  chrome_options.add_argument("--disable-dev-shm-usage") 
-  chrome_options.add_argument("--headless")  
-  
-  # Setup ChromeDriver
-  service = Service(ChromeDriverManager().install())
-  driver = webdriver.Chrome(service=service, options=chrome_options)
-  
-  driver.get("https://www.cricbuzz.com/")
-  print(driver.title)
-  print(driver.title, flush=True)
-  print(driver.current_url)
-  print(driver.current_url, flush=True)
-  driver.quit()
+    return 'hi'
+
 
 if __name__ == "__main__":
-  main()
+  app.run()
