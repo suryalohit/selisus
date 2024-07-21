@@ -12,10 +12,13 @@ app.debug = True
 
 @app.route('/')
 def main():
-    print("pdgdx")
+    for i in range(6):
+        print(i)
+        time.sleep(3)
+    print("end")
         
     
-    return 'hi'
+    return '200'
 
 
 if __name__ == "__main__":
