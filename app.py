@@ -21,12 +21,15 @@ def main():
       
       
       chrome_options.add_argument("--disable-dev-shm-usage") 
+      print("start2")
       chrome_options.add_argument('--remote-debugging-pipe')
       
       # Setup ChromeDriver
+      print("start3")
       service = Service(ChromeDriverManager().install())
+      print("start4")
       driver = webdriver.Chrome(service=service, options=chrome_options)
-      
+      print("start5")
       driver.get("https://www.cricbuzz.com/")
       print("start2")
       print(driver.title)
