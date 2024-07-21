@@ -32,8 +32,7 @@ def main():
       driver.set_window_size(1920, 780)
       driver.get("https://x.com/i/flow/login")
       
-      time.sleep(5)
-      print(driver.get_window_size())
+     
       print("1")
       
       username = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
@@ -41,7 +40,7 @@ def main():
       username.send_keys('devikagoud245@gmail.com')
       WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]'))).click()
       
-      time.sleep(5)
+      
       try:
             print("2")
             check = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
@@ -49,14 +48,13 @@ def main():
             check.send_keys('retiredHippo')
             WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/button'))).click()
           
-            time.sleep(4)
+          
 
       except:
             print("except")
 
-      print("3")
-      print("before password")
-      print(driver.get_screenshot_as_base64()) 
+ 
+    
       password =WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "password")))
       password.click()
       password.send_keys('Asailohit30@')
@@ -73,11 +71,7 @@ def main():
             try:
                   driver.set_window_size(1920, 780)
                   driver.get('https://x.com/home/')
-                  time.sleep(8)
-                  print("after login to x")
-                  print(driver.get_screenshot_as_base64()) 
-                  print("4")
-                  
+              
                   
                   for space in list(results.keys()):
                         print(f"space name is : {space}")
@@ -105,9 +99,8 @@ def main():
                   print("10")
                   driver.set_window_size(1920, 780)
                   driver.get('https://x.com/home/')
-                  time.sleep(19)
-                  print(driver.get_screenshot_as_base64()) 
-                  print("after login to x")
+                  time.sleep(20)
+                
                   
                   available_spaces=driver.find_elements(By.CLASS_NAME, 'css-175oi2r.r-1habvwh.r-eqz5dr.r-1wtj0ep.r-1mmae3n.r-3pj75a.r-lrvibr.r-1loqt21.r-o7ynqc.r-6416eg.r-1ny4l3l')
                   print(f"total spaces available : {len(available_spaces)}")
@@ -115,7 +108,7 @@ def main():
                   for spaces in available_spaces:
                         driver.set_window_size(1920, 780)
                         spaces.click()
-                        time.sleep(2)
+                        time.sleep(15)
                         print("open the space")
                         print(driver.get_screenshot_as_base64()) 
                         parts = driver.current_url.split('/')
