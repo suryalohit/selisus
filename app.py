@@ -34,12 +34,12 @@ def main():
       
      
       print("1")
-      
+      time.sleep(3)
       username = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
       username.click()
       username.send_keys('devikagoud245@gmail.com')
       WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]'))).click()
-      
+      time.sleep(2)
       
       try:
             print("2")
@@ -47,7 +47,7 @@ def main():
             check.click()
             check.send_keys('retiredHippo')
             WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/button'))).click()
-          
+            time.sleep(3)
           
 
       except:
@@ -59,7 +59,7 @@ def main():
       password.click()
       password.send_keys('Asailohit30@')
       WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/button'))).click()
-    
+      time.sleep(3)
       
       
       print("login done")
