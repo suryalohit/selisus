@@ -51,7 +51,8 @@ def main():
 
       print("3")
       driver.save_screenshot("mon3.png")
-      password = driver.find_element("name", "password").click()
+      password = driver.find_element("name", "password")
+      password.click()
       password.send_keys('Asailohit30@')
       driver.find_element("xpath", '//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/button').click()
       
