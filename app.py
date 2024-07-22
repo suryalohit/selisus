@@ -25,7 +25,7 @@ def main():
       chrome_options = Options()
       
       chrome_options.add_argument("--no-sandbox")
-     
+      chrome_options.add_argument("--headless")
       chrome_options.add_argument("--disable-gpu")
       chrome_options.add_argument("--disable-dev-shm-usage") 
       chrome_options.add_argument('--remote-debugging-pipe')
@@ -34,12 +34,7 @@ def main():
       service = Service(ChromeDriverManager().install())
       
       driver = webdriver.Chrome( options=chrome_options)
-      veg_dict = {}
-      veg_dict["width"] = 430
-      veg_dict["height"] = 932
-      veg_dict["deviceScaleFactor"] = 0
-      veg_dict["mobile"] = True
-      driver.execute_cdp_cmd("Emulation.setDeviceMetricsOverride",veg_dict)
+    
       driver.get("https://x.com/i/flow/login")
       time.sleep(15)
      
