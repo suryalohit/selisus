@@ -44,14 +44,14 @@ def main():
       time.sleep(3)
     
       driver.get("https://x.com/i/flow/login")
-      time.sleep(15)
+      time.sleep(5)
      
       print("1")
       print(driver.get_screenshot_as_base64())
       username = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
       username.click()
       username.send_keys('devikagoud245@gmail.com')
-      WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]'))).click()
+      WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div/button[2]'))).click()
       time.sleep(10)
       
       try:
@@ -60,22 +60,24 @@ def main():
             check = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
             check.click()
             check.send_keys('retiredHippo')
-            WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div/div/button'))).click()
-            time.sleep(3)
+            WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div[2]/div/div/div/div/button'))).click()
+            time.sleep(4)
           
 
       except:
             print("except")
 
  
-    
+      print("3")
+      print(driver.get_screenshot_as_base64())
       password =WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "password")))
       password.click()
       password.send_keys('Asailohit30@')
-      WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/button'))).click()
+      WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div[2]/div/div/div[1]/div/div/button'))).click()
+      
+      
+      print("5")
       print(driver.get_screenshot_as_base64())
-      
-      
       print("login done")
       results={}
       #for i in range(1,10):
