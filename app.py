@@ -21,13 +21,7 @@ app.debug = True
 
 @app.route('/')
 def main():
-      mobile_emulation = {
-   "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
-   "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
-   "clientHints": {"platform": "Android", "mobile": True} }
-
-
-      
+    
       chrome_options = Options()
       
       chrome_options.add_argument("--no-sandbox")
@@ -35,18 +29,21 @@ def main():
       chrome_options.add_argument("--disable-gpu")
       chrome_options.add_argument("--disable-dev-shm-usage") 
       chrome_options.add_argument('--remote-debugging-pipe')
-      chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
-      chrome_options.page_load_strategy = 'normal'
+      
       
       service = Service(ChromeDriverManager().install())
       
       driver = webdriver.Chrome(service=service, options=chrome_options)
-      driver.set_window_size(1920, 780)
-      driver.get("https://x.com/")
+      veg_dict = {}
+      veg_dict["width"] = 430
+      veg_dict["height"] = 932
+      veg_dict["deviceScaleFactor"] = 0
+      veg_dict["mobile"] = True
+      driver.execute_cdp_cmd("Emulation.setDeviceMetricsOverride",veg_dict)
+      driver.get("https://x.com/i/flow/login")
       
      
       print("1")
-      time.sleep(6)
       print(driver.get_screenshot_as_base64())
       username = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
       username.click()
@@ -72,7 +69,7 @@ def main():
       password.click()
       password.send_keys('Asailohit30@')
       WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[2]/div/div[1]/div/div/button'))).click()
-      time.sleep(3)
+      print(driver.get_screenshot_as_base64())
       
       
       print("login done")
