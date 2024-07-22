@@ -19,6 +19,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     gnupg \
     unzip \
+    apt-transport-https \
+    ca-certificates \
     --no-install-recommends
 
 # Install Chrome
