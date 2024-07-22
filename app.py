@@ -62,7 +62,7 @@ def main():
             check.click()
             check.send_keys('retiredHippo')
             print("2.22")
-            WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div[2]/div/div/div/div/button'))).click()
+            WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR,'button.css-175oi2r.r-sdzlij.r-1phboty.r-rs99b7.r-lrvibr.r-1jayybb.r-mtrfb5.r-qq1thf.r-o7ynqc.r-6416eg.r-icoktb.r-1ny4l3l'))).click()
             time.sleep(20)
             print("2.1")
           
