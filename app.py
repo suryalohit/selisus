@@ -41,10 +41,10 @@ def main():
       veg_dict["deviceScaleFactor"] = 0
       veg_dict["mobile"] = True
       driver.execute_cdp_cmd("Emulation.setDeviceMetricsOverride",veg_dict)
-      time.sleep(3)
+      
     
       driver.get("https://x.com/i/flow/login")
-      time.sleep(5)
+      time.sleep(20)
      
       print("1")
       print(driver.get_screenshot_as_base64())
@@ -52,7 +52,7 @@ def main():
       username.click()
       username.send_keys('devikagoud245@gmail.com')
       WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div/button[2]'))).click()
-      time.sleep(10)
+      time.sleep(15)
       
       try:
             print("2")
@@ -61,7 +61,8 @@ def main():
             check.click()
             check.send_keys('retiredHippo')
             WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div[2]/div/div/div/div/button'))).click()
-            time.sleep(4)
+            time.sleep(20)
+            print("2.1")
           
 
       except:
@@ -76,7 +77,7 @@ def main():
       WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div[2]/div/div/div[1]/div/div/button'))).click()
       
       
-      print("5")
+      print("15")
       print(driver.get_screenshot_as_base64())
       print("login done")
       results={}
