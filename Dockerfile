@@ -33,7 +33,6 @@ RUN CHROME_VERSION="$(google-chrome --version)" \
     && chmod +x /usr/local/bin/chromedriver \
     && chromedriver --version
 
-FROM python:3.9-slim
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -62,9 +61,7 @@ RUN CHROME_VERSION="$(google-chrome --version)" \
     && chmod +x /usr/local/bin/chromedriver \
     && chromedriver --version  
 
-# Base Image
-FROM ubuntu:20.04=
-ENV PYTHONUNBUFFERED True
+
     
 
 # Install Python dependencies
