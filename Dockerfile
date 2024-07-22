@@ -14,6 +14,13 @@ COPY . ./
 RUN apt -y update
 RUN apt -y upgrade
 
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    gnupg \
+    unzip \
+    --no-install-recommends
+
 # Install Chrome
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
     && (dpkg -i /tmp/google-chrome-stable_current_amd64.deb || apt-get -fy install)  \
@@ -34,12 +41,6 @@ RUN CHROME_VERSION="$(google-chrome --version)" \
     && chromedriver --version
 
 
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    curl \
-    gnupg \
-    unzip \
-    --no-install-recommends
 
 # Install Chrome
 RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
