@@ -1,7 +1,7 @@
 FROM python:3.8 AS builder
 
 RUN apt-get update; apt-get clean
-RUN pip install Flask gunicorn selenium==4.17.2 selenium-wire==5.1.0 pyotp webdriver-manager==4.0.1  blinker==1.7.0 requests==2.32.3
+RUN pip install Flask gunicorn selenium==4.17.2 selenium-wire==5.1.0 pyotp webdriver-manager  blinker==1.7.0 requests==2.32.3
 
 # Install chrome dependencies
 RUN apt-get install -y x11vnc xvfb fluxbox wget wmctrl unzip
