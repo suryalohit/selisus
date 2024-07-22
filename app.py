@@ -41,7 +41,7 @@ def main():
       veg_dict["mobile"] = True
       driver.execute_cdp_cmd("Emulation.setDeviceMetricsOverride",veg_dict)
       driver.get("https://x.com/i/flow/login")
-      
+      time.sleep(4)
      
       print("1")
       print(driver.get_screenshot_as_base64())
@@ -49,7 +49,7 @@ def main():
       username.click()
       username.send_keys('devikagoud245@gmail.com')
       WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/button[2]'))).click()
-      time.sleep(2)
+      time.sleep(4)
       
       try:
             print("2")
@@ -79,7 +79,7 @@ def main():
            
             print(f"running round:{i}")
             try:
-                  driver.set_window_size(1920, 780)
+                 
                   driver.get('https://x.com/home/')
               
                   
