@@ -21,7 +21,7 @@ RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`cu
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
 # Install Python dependencies
-RUN pip install Flask gunicorn selenium==4.17.2 selenium-wire==5.1.0 pyotp webdriver-manager blinker==1.7.0 requests==2.32.3
+RUN pip install Flask gunicorn selenium==4.17.2 selenium-wire==5.1.0 pyotp webdriver-manager==4.0.1  blinker==1.7.0 requests==2.32.3
 
 EXPOSE 8000
 CMD exec gunicorn --bind 0.0.0.0 --workers 1 --timeout 0 app:app
