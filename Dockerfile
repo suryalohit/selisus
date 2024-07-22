@@ -12,14 +12,24 @@ COPY . ./
 RUN apt -y update
 RUN apt -y upgrade
 
-# Install App dependencies and chrome webdriver
-RUN apt install -yqq unzip curl wget python3-pip
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN apt install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb
-RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`/chromedriver_linux64.zip
-RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
-RUN chromedriver --version
+# Install Chrome
+RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && (dpkg -i /tmp/google-chrome-stable_current_amd64.deb || apt-get -fy install)  \
+    && rm -rf /tmp/google-chrome-stable_current_amd64.deb \
+    && sed -i 's|HERE/chrome"|HERE/chrome" --disable-setuid-sandbox --no-sandbox|g' \
+        "/opt/google/chrome/google-chrome" \
+    && google-chrome --version
+
+RUN CHROME_VERSION="$(google-chrome --version)" \
+    && export CHROMEDRIVER_RELEASE="$(echo $CHROME_VERSION | sed 's/^Google Chrome //')" && export CHROMEDRIVER_RELEASE=${CHROMEDRIVER_RELEASE%%.*} \
+    && CHROMEDRIVER_VERSION=$(curl --silent --show-error --location --fail --retry 4 --retry-delay 5 http://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROMEDRIVER_RELEASE}) \
+    && curl --silent --show-error --location --fail --retry 4 --retry-delay 5 --output /tmp/chromedriver_linux64.zip "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip" \
+    && cd /tmp \
+    && unzip chromedriver_linux64.zip \
+    && rm -rf chromedriver_linux64.zip \
+    && mv chromedriver /usr/local/bin/chromedriver \
+    && chmod +x /usr/local/bin/chromedriver \
+    && chromedriver --version
 
 # Install Python dependencies
 RUN pip install Flask gunicorn selenium==4.17.2 selenium-wire==5.1.0 pyotp webdriver-manager==4.0.1  blinker==1.7.0 requests==2.32.3
