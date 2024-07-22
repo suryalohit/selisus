@@ -23,5 +23,5 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 # Install Python dependencies
 RUN pip install Flask gunicorn selenium==4.17.2 selenium-wire==5.1.0 pyotp webdriver-manager blinker==1.7.0 requests==2.32.3
 
-
-CMD exec gunicorn --bind :10000  port=10000 --timeout 0 app:app
+EXPOSE 10000
+CMD exec gunicorn --bind :10000 --timeout 10 app:app
