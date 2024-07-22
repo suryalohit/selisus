@@ -60,6 +60,12 @@ def main():
       time.sleep(15)
       
       try:
+            try:
+                
+                 WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div/div[2]/div/div/div/button'))).click()
+          
+            except:
+                   print("except")
             print("2")
             print(driver.get_screenshot_as_base64())
             check = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "text")))
