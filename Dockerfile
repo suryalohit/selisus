@@ -18,7 +18,6 @@ RUN apt-get -y update
 # Magic happens
 RUN apt-get install -y google-chrome-stable
 
-Copycopy code to clipboard
 # Installing Unzip
 RUN apt-get install -yqq unzip
 
