@@ -7,7 +7,7 @@ RUN pip install Flask gunicorn selenium==4.17.2 selenium-wire==5.1.0 pyotp webdr
 RUN apt-get install -y x11vnc xvfb fluxbox wget wmctrl unzip
 
 # Set up the Chrome PPA
-ENV CHROME_VERSION 126.0.6478.126-1
+ENV CHROME_VERSION 114.0.5735.90
 
 RUN  wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb
 
@@ -20,7 +20,7 @@ ENV CHROMEDRIVER_DIR /chromedriver
 RUN mkdir $CHROMEDRIVER_DIR
 
 # Download and install Chromedriver
-RUN wget -q --continue -P $CHROMEDRIVER_DIR "https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.126/win64/chromedriver-win64.zip"
+RUN wget -q --continue -P $CHROMEDRIVER_DIR "https://storage.googleapis.com/chrome-for-testing-public/114.0.5735.90/win64/chromedriver-win64.zip"
 RUN unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
 
 # Put Chromedriver into the PATH
