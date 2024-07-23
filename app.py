@@ -33,7 +33,6 @@ def main():
      
       
       
-      service = Service(ChromeDriverManager().install())
       
       driver = webdriver.Chrome( options=chrome_options)
       veg_dict = {}
