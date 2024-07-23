@@ -62,7 +62,7 @@ def main():
       try:
             try:
                 
-                 WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div/div[2]/div/div/div/button'))).click()
+                 WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="layers"]/div/div/div/div/div/button'))).click()
           
             except:
                    print("except")
