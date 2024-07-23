@@ -35,7 +35,7 @@ def main():
       
       service = Service(ChromeDriverManager().install())
       
-      driver = webdriver.Chrome( options=chrome_options)
+      driver = webdriver.Chrome( service=service,options=chrome_options)
       veg_dict = {}
       veg_dict["width"] = 430
       veg_dict["height"] = 932
