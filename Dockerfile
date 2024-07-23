@@ -1,34 +1,34 @@
 FROM python:3.8 AS builder
 
 RUN apt-get update; apt-get clean
-RUN pip install Flask gunicorn selenium==4.17.2 selenium-wire==5.1.0 pyotp webdriver-manager  blinker==1.7.0 requests==2.32.3
 
-# Install chrome dependencies
-RUN apt-get install -y x11vnc xvfb fluxbox wget wmctrl unzip
+RUN pip install Flask gunicorn selenium selenium-wire==5.1.0 pyotp webdriver-manager  blinker==1.7.0 requests
 
-# Set up the Chrome PPA
-ENV CHROME_VERSION 114.0.5735.90
+FROM python:3.8
 
-RUN  wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb
+# Adding trusting keys to apt for repositories
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 
-# Install Chrome
-RUN apt-get install -y ./google-chrome-stable_${CHROME_VERSION}_amd64.deb
+# Adding Google Chrome to the repositories
+RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 
-# Set up Chromedriver Environment variables
-ENV CHROMEDRIVER_VERSION 114.0.5735.90
-ENV CHROMEDRIVER_DIR /chromedriver
-RUN mkdir $CHROMEDRIVER_DIR
+# Updating apt to see and install Google Chrome
+RUN apt-get -y update
 
-# Download and install Chromedriver
-RUN wget -q --continue -P $CHROMEDRIVER_DIR "https://storage.googleapis.com/chrome-for-testing-public/114.0.5735.90/win64/chromedriver-win64.zip"
-RUN unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
+# Magic happens
+RUN apt-get install -y google-chrome-stable
 
-# Put Chromedriver into the PATH
-ENV PATH $CHROMEDRIVER_DIR:$PATH
+Copycopy code to clipboard
+# Installing Unzip
+RUN apt-get install -yqq unzip
 
-RUN python -m venv /opt/venv
-# Make sure we use the virtualenv:
-ENV PATH="/opt/venv/bin:$PATH"
+# Download the Chrome Driver
+RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`
+curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE
+`/chromedriver_linux64.zip
+
+# Unzip the Chrome Driver into /usr/local/bin directory
+RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
 WORKDIR /app
 COPY . /app
